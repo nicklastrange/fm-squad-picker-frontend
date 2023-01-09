@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/fm-squad-picker-frontend-rgl.iml" filepath="$PROJECT_DIR$/.idea/fm-squad-picker-frontend-rgl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/fm-squad-picker-frontend.iml" filepath="$PROJECT_DIR$/.idea/fm-squad-picker-frontend.iml" />
     </modules>
   </component>
 </project>
