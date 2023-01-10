@@ -1,9 +1,11 @@
-import {FC, memo, ReactElement} from "react";
+import {FC, ReactElement} from "react";
 import {useDrag, useDrop} from "react-dnd";
+import {Position} from "../model/Position";
 
 interface PlayerProps {
     id: number,
     isActive: boolean,
+    position: Position,
     swapPlayers: (dragged: number, droppedOn: number) => void
 }
 
@@ -17,8 +19,6 @@ const Player: FC<PlayerProps> = (props): ReactElement => {
             const dropResult = monitor.getDropResult<PlayerProps>();
             if (item && dropResult) {
                 props.swapPlayers(item.props.id, dropResult.id)
-                // console.log(`Dragged item id: ${item.props.id}`)
-                // console.log(`Dropped item id: ${dropResult.id}`)
             }
         },
         collect: (monitor) => ({
@@ -49,6 +49,6 @@ const Player: FC<PlayerProps> = (props): ReactElement => {
         drop(obj);
     }
 
-    return <div ref={attachDragAndDropRef} style={playerStyles}><p>{props.id}</p></div>
+    return <div ref={attachDragAndDropRef} style={playerStyles}><p>{props.position}</p></div>
 }
 export default Player;
