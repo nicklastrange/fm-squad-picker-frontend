@@ -53,9 +53,11 @@ const Pitch: FC<PitchProps> = (props): ReactElement => {
     const swapItems = (dragged: number, droppedOn: number) => {
         if (dragged === droppedOn) return;
         let newPlayerList = Array.from(playerList);
-        let tmp = newPlayerList[dragged];
-        newPlayerList[dragged] = newPlayerList[droppedOn]
-        newPlayerList[droppedOn] = tmp
+        let draggedIndex = newPlayerList.findIndex(item => item.id === dragged);
+        let droppedOnIndex = newPlayerList.findIndex(item => item.id === droppedOn);
+        let tmp = newPlayerList[draggedIndex];
+        newPlayerList[draggedIndex] = newPlayerList[droppedOnIndex]
+        newPlayerList[droppedOnIndex] = tmp
         setPlayerList(newPlayerList);
     }
 
