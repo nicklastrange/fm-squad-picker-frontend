@@ -1,4 +1,4 @@
-import {FC, ReactElement} from "react";
+import {FC, memo, ReactElement} from "react";
 import {useDrag, useDrop} from "react-dnd";
 
 interface PlayerProps {

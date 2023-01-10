@@ -1,4 +1,4 @@
-import {FC, ReactElement, useState} from "react";
+import {FC, ReactElement, useCallback, useState} from "react";
 import './Pitch.css';
 import Player from "../Player";
 
@@ -52,14 +52,13 @@ const Pitch: FC<PitchProps> = (props): ReactElement => {
 
     const swapItems = (dragged: number, droppedOn: number) => {
         if (dragged === droppedOn) return;
-        let newPlayerList = Array.from(playerList);
-        let draggedIndex = newPlayerList.findIndex(item => item.id === dragged);
-        let droppedOnIndex = newPlayerList.findIndex(item => item.id === droppedOn);
-        let tmp = newPlayerList[draggedIndex];
-        newPlayerList[draggedIndex] = newPlayerList[droppedOnIndex]
-        newPlayerList[droppedOnIndex] = tmp
-        setPlayerList(newPlayerList);
-    }
+        let draggedIndex = playerList.findIndex(item => item.id === dragged);
+        let droppedOnIndex = playerList.findIndex(item => item.id === droppedOn);
+        let tmp = playerList[draggedIndex];
+        playerList[draggedIndex] = playerList[droppedOnIndex];
+        playerList[droppedOnIndex] = tmp;
+        setPlayerList([...playerList]);
+    };
 
     const pitchStyles = {
         height: `${props.height}px`,
