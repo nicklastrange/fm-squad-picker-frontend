@@ -50,7 +50,7 @@ const Pitch: FC<PitchProps> = (props): ReactElement => {
 
     const [playerList, setPlayerList] = useState(initialPlayerList);
 
-    const swapItems = (dragged: number, droppedOn: number) => {
+    const swapPlayers = (dragged: number, droppedOn: number) => {
         if (dragged === droppedOn) return;
         let draggedIndex = playerList.findIndex(item => item.id === dragged);
         let droppedOnIndex = playerList.findIndex(item => item.id === droppedOn);
@@ -66,7 +66,7 @@ const Pitch: FC<PitchProps> = (props): ReactElement => {
     };
 
     return <div className="pitch" style={pitchStyles}>
-        {playerList.map(item => <Player key={item.id} id={item.id} isActive={item.isActive} swapItems={swapItems}/>)}
+        {playerList.map(item => <Player key={item.id} id={item.id} isActive={item.isActive} swapPlayers={swapPlayers}/>)}
     </div>
 }
 

@@ -4,7 +4,7 @@ import {useDrag, useDrop} from "react-dnd";
 interface PlayerProps {
     id: number,
     isActive: boolean,
-    swapItems: (dragged: number, droppedOn: number) => void
+    swapPlayers: (dragged: number, droppedOn: number) => void
 }
 
 const Player: FC<PlayerProps> = (props): ReactElement => {
@@ -16,7 +16,7 @@ const Player: FC<PlayerProps> = (props): ReactElement => {
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult<PlayerProps>();
             if (item && dropResult) {
-                props.swapItems(item.props.id, dropResult.id)
+                props.swapPlayers(item.props.id, dropResult.id)
                 // console.log(`Dragged item id: ${item.props.id}`)
                 // console.log(`Dropped item id: ${dropResult.id}`)
             }
