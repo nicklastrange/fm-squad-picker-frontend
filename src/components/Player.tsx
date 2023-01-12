@@ -1,16 +1,17 @@
 import {FC, ReactElement} from "react";
 import {useDrag, useDrop} from "react-dnd";
 import {Position} from "../model/Position";
+import {Role} from "../model/Role";
 
 interface PlayerProps {
     id: number,
     isActive: boolean,
     position: Position,
+    currentRole: Role
     swapPlayers: (dragged: number, droppedOn: number) => void
 }
 
 const Player: FC<PlayerProps> = (props): ReactElement => {
-
 
     const [{isDragging}, drag] = useDrag(() => ({
         type: 'player',
@@ -49,6 +50,8 @@ const Player: FC<PlayerProps> = (props): ReactElement => {
         drop(obj);
     }
 
-    return <div ref={attachDragAndDropRef} style={playerStyles}><p>{props.position}</p></div>
+    return <div ref={attachDragAndDropRef} style={playerStyles}>
+        <p>{props.currentRole}</p>
+    </div>
 }
 export default Player;
